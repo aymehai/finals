@@ -66,7 +66,7 @@
 											<p class="text-center"
 												th:text="${#dates.format(t.date, 'MM-dd-yyyy')}"></p>
 											<th:block th:if="${user.id}==${camp.adminId}">
-                                            <a class="text-center" th:href="@{'/edittest/'+${t.testimonialId}}" th:text="edit"></a>
+                                            <a class="text-center" th:href="@{'/edittest/'+${t.testimonialId}}"th:text="edit"></a>
 											</th:block>
 										</div>
 									</div>
@@ -76,6 +76,21 @@
 					</th:block>
 				</div>
 				<br />
+				<nav aria-label="Page navigation">
+					<div class="text-center">
+						<ul class="pagination pagination-lg">
+							<li><a th:href="'/feed/'+${valuePrev}" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+							</a></li>
+							<th:block th:each="v : ${values}">
+								<li><a th:text="${v}" th:href="'/feed/' + ${v}" /></li>
+							</th:block>
+							<li><a th:href="'/feed/'+${valueNext}" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</div>
+				</nav>
 				<div class="container">
 
 					<a th:href="@{'/email/' + ${camp.campId}}">Send the Camp Admin
